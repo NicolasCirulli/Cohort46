@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+footer p {
+    margin: 0 !important;
+}
+.encale__logo{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    padding-left: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.alto{
+    min-height: 100vh;
+}
+.flex-centrado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ancho-auto{
+    width: auto !important;
+}
+.carousel-item img{
+   height: 40vh !important;
+   object-fit: cover;
+   object-position: 50% 10%;
+}
+.card-imagen{
+    height: 40vh !important;
+    object-fit: cover;
+    object-position: center;
+}
+.text-card-header{
+    color: #e6e3dc !important;
+}
+.bg-white{
+    background-color: #e6e3dc !important;
+}
