@@ -1,28 +1,15 @@
 const $contenedor = document.getElementById( 'contenedor-personajes' )
 
 
-const agentes = filtrarPersonajes( personajes.data )
+const agentes = personajes.data.filter( agente => agente.isPlayableCharacter )
 
-imprimirNodos( agentes, $contenedor )
-
-
-// funciones
-function filtrarPersonajes( arrayPersonajes ){
-    const aux = []
-    for( let agente of arrayPersonajes ){
-        if( agente.isPlayableCharacter ){
-            aux.push( agente )
-        }
-     }
-    return aux
+const imprimirArticulos = ( arrayPersonajes, elementoHTML ) => {
+    elementoHTML.innerHTML = arrayPersonajes.reduce( (acc, act) =>  acc + crearArticle( act ), '' )
 }
-function imprimirArticulos( arrayPersonajes, elementoHTML ){
-    let template = ''
-    for( let personaje of arrayPersonajes){
-        template += crearArticle( personaje )
-    }
-    elementoHTML.innerHTML = template
-}
+
+imprimirArticulos( agentes, $contenedor )
+
+
 function crearArticle( agente ){
     return `<article class="card border-primary col-11 col-md-6 col-xl-3">
                 <img class="card-img-top" src="${agente.bustPortrait}" alt="Title">
