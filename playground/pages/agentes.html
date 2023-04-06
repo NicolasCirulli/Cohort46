@@ -10,7 +10,7 @@
     <title>Repaso Bootstrap 5</title>
 </head>
 <body>
-    <div class="d-flex flex-column alto">
+    <div class="d-flex flex-column alto gap-3">
 
         <header class="bg-dark">
             <nav class="container navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -41,8 +41,21 @@
                 </div>
             </nav>
         </header>
-        <main class="flex-grow-1 container d-flex justify-content-center flex-wrap py-5 gap-3" id="contenedor-personajes">
-
+        <div class="col-12 d-flex gap-3 justify-content-center align-items-center">
+          <div class="col-3">
+            <select class="form-select form-select-lg border-dark" style="height: 50px;" id="">
+              <option selected>All</option>
+              <option value="">New Delhi</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <input type="text"
+             class="form-control border-dark" style="height: 50px;" id="" aria-describedby="helpId" placeholder="Ej: Sage">
+          </div>
+          
+        </div>
+        <main class="flex-grow-1 container d-flex justify-content-center flex-wrap py-2 gap-3" id="contenedor-personajes">
+          
             
 
           

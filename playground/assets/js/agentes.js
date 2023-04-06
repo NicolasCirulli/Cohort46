@@ -11,7 +11,7 @@ imprimirArticulos( agentes, $contenedor )
 
 
 function crearArticle( agente ){
-    return `<article class="card border-primary col-11 col-md-6 col-xl-3">
+    return `<article class="card border-dark col-11 col-md-6 col-xl-3">
                 <img class="card-img-top" src="${agente.bustPortrait}" alt="Title">
                 <div class="card-body">
                 <h4 class="card-title">${agente.displayName}</h4>
@@ -63,5 +63,3 @@ function crearNodoArticle(agente){
     
     return $article
 }
-
-
