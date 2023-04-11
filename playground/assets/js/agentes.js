@@ -4,24 +4,32 @@ const $contenedor = document.getElementById( 'contenedor-personajes' )
 const $select = document.getElementById( 'select-js' )
 const $inputBusqueda = document.getElementById( 'busqueda-js' )
 
+let agentes = []
+// peticion
+const url = 'https://valorant-api.com/v1/agents'
+fetch( url )
+    .then( response => response.json() )
+    .then( datos => {
+        agentes = datos.data.filter( agente => agente.isPlayableCharacter )
+        const arrayRoles = [ ...new Set( agentes.map( agente => agente.role.displayName ) ) ]
+        imprimirOptions( arrayRoles, $select  )
+        imprimirArticulos( agentes, $contenedor )
+    } )
+    .catch( err => console.log(err) )
+
+
 // datos
-const agentes = personajes.data.filter( agente => agente.isPlayableCharacter )
-
-const arrayRoles = [ ...new Set( agentes.map( agente => agente.role.displayName ) ) ]
-
+const funcionEvento = () => {
+    const agentesFiltrados = filtroCruzado( agentes, $select.value, $inputBusqueda.value )
+    imprimirArticulos( agentesFiltrados, $contenedor )
+} 
 // eventos
-$select.addEventListener( 'change', () => {
-    const agentesFiltrados = filtroCruzado( agentes, $select.value, $inputBusqueda.value )
-    imprimirArticulos( agentesFiltrados, $contenedor )
-} )
-$inputBusqueda.addEventListener( 'input', () => {
-    const agentesFiltrados = filtroCruzado( agentes, $select.value, $inputBusqueda.value )
-    imprimirArticulos( agentesFiltrados, $contenedor )
-} )
+$select.addEventListener( 'change', funcionEvento )
+$inputBusqueda.addEventListener( 'input', funcionEvento )
 
-// ejecuciones
-imprimirArticulos( agentes, $contenedor )
-imprimirOptions( arrayRoles, $select  )
+
+
+
 
 
 

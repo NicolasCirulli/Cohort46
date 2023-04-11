@@ -8,6 +8,7 @@ export function imprimirArticulos ( arrayPersonajes, elementoHTML ) {
 export function crearArticle( agente ){
     const { bustPortrait, displayName, role:{displayName:role}, description } = agente
     const colorRol = role === 'Sentinel' ? 'text-info' : 'text-danger'
+    console.log(location)
     /* let colorRol = ""
     if( role === 'Sentinel' ){
         colorRol = 'text-info'
