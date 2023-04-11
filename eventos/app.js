@@ -1,5 +1,8 @@
-const $contenedor = document.getElementById('contenedor-js')
-const $lista = document.getElementById('numeros')
+const $ = selector => document.querySelector( selector )
+
+
+const $contenedor = $('#contenedor-js')
+const $lista = $('#numeros')
 /* const fn = (e) => {
     if(  e.target.classList.contains('cuadrado') ){
         e.target.classList.toggle( 'circulo' )
@@ -16,7 +19,7 @@ const render = ( lista, elemento ) => {
 }
 
 const filtroNumeros = ( listaCompleta ) => {
-    let value = document.querySelector('input[type="radio"]:checked').value
+    let value = $('input[type="radio"]:checked').value
     switch( value ){
         case '1':
             return listaCompleta

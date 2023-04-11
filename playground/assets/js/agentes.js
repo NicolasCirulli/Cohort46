@@ -1,27 +1,68 @@
+import {imprimirArticulos, imprimirOptions, filtroCruzado} from './module/funciones.js'
+// referencias
 const $contenedor = document.getElementById( 'contenedor-personajes' )
+const $select = document.getElementById( 'select-js' )
+const $inputBusqueda = document.getElementById( 'busqueda-js' )
+
+let agentes = []
+// peticion
+const url = 'https://valorant-api.com/v1/agents'
+fetch( url )
+    .then( response => response.json() )
+    .then( datos => {
+        agentes = datos.data.filter( agente => agente.isPlayableCharacter )
+        const arrayRoles = [ ...new Set( agentes.map( agente => agente.role.displayName ) ) ]
+        imprimirOptions( arrayRoles, $select  )
+        imprimirArticulos( agentes, $contenedor )
+    } )
+    .catch( err => console.log(err) )
 
 
-const agentes = personajes.data.filter( agente => agente.isPlayableCharacter )
+// datos
+const funcionEvento = () => {
+    const agentesFiltrados = filtroCruzado( agentes, $select.value, $inputBusqueda.value )
+    imprimirArticulos( agentesFiltrados, $contenedor )
+} 
+// eventos
+$select.addEventListener( 'change', funcionEvento )
+$inputBusqueda.addEventListener( 'input', funcionEvento )
 
-const imprimirArticulos = ( arrayPersonajes, elementoHTML ) => {
-    elementoHTML.innerHTML = arrayPersonajes.reduce( (acc, act) =>  acc + crearArticle( act ), '' )
-}
-
-imprimirArticulos( agentes, $contenedor )
 
 
-function crearArticle( agente ){
-    return `<article class="card border-primary col-11 col-md-6 col-xl-3">
-                <img class="card-img-top" src="${agente.bustPortrait}" alt="Title">
-                <div class="card-body">
-                <h4 class="card-title">${agente.displayName}</h4>
-                <p class="card-text">${agente.description}</p>
-                </div>
-            </article>
-    `
-}
 
-function imprimirNodos( arrayPersonajes, elementoHTML ){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ejemplo con nodos
+/* function imprimirNodos( arrayPersonajes, elementoHTML ){
     const $fragment = document.createDocumentFragment()
     for (const personaje of arrayPersonajes) {
         $fragment.appendChild(  crearNodoArticle( personaje )  )
@@ -62,6 +103,4 @@ function crearNodoArticle(agente){
     $article.append( $imagen, $div )
     
     return $article
-}
-
-
+} */
