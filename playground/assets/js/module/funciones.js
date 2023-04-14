@@ -6,24 +6,22 @@ export function imprimirArticulos ( arrayPersonajes, elementoHTML ) {
     }
 }
 export function crearArticle( agente ){
-    const { bustPortrait, displayName, role:{displayName:role}, description } = agente
+    let href = location.pathname.includes('agentes') ? './details.html' : './pages/details.html' 
+    const { bustPortrait, displayName, role:{displayName:role}, description, uuid} = agente
     const colorRol = role === 'Sentinel' ? 'text-info' : 'text-danger'
-    console.log(location)
-    /* let colorRol = ""
-    if( role === 'Sentinel' ){
-        colorRol = 'text-info'
-    }else{
-        colorRol = 'text-danger'
-    } */
+    let favoritos = JSON.parse( localStorage.getItem('favoritos') ) || []
+    let btnClase = favoritos.some( fav => fav.uuid == uuid ) ? 'btn-danger' : ''
     return `<article class="card border-dark col-11 col-md-6 col-xl-3">
                 <img class="card-img-top" src="${bustPortrait}" alt="Title">
                 <div class="card-body">
                 <h4 class="card-title">${displayName}</h4>
                 <p class="card-text ${colorRol}">${role}</p>
                 <p class="card-text">${description}</p>
+                <button class="btn border-danger ${btnClase}" data-name="${displayName}" data-uuid="${uuid}"> favoritos</button>  
+                <a class="btn btn-primary" href="${href}"> Ver mas </a>
                 </div>
-            </article>
-    `
+                </article>
+                `
 }
 export function imprimirOptions( roles, select ){
     let template = ""

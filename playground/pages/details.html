@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="../assets/images/valorant.png" type="image/x-icon">
     <title>Repaso Bootstrap 5</title>
 </head>
 <body>
-    <div class="d-flex flex-column alto gap-3">
+    <div class="d-flex flex-column alto">
 
         <header class="bg-dark">
             <nav class="container navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -29,36 +28,21 @@
                         <a class="nav-link " href="../index.html">Inicio</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link active" href="#">Agentes</a>
+                        <a class="nav-link" href="./agentes.html">Agentes</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="./mapas.html">Mapas</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="./armas.html">Armas</a>
+                        <a class="nav-link active" href="#">Armas</a>
                       </li>
                     </ul>
                   </div>
                 </div>
             </nav>
         </header>
-        <div class="col-12 d-flex flex-wrap gap-3 justify-content-center align-items-center">
-          <div class="col-9 col-xl-3">
-            <select class="form-select form-select-lg border-dark" style="height: 50px;" id="select-js">
-              <option selected value="all">All</option>
-            </select>
-          </div>
-          <div class="col-9 col-xl-3">
-            <input type="text"
-             class="form-control border-dark" style="height: 50px;" id="busqueda-js" aria-describedby="helpId" placeholder="Ej: Sage">
-          </div>
-          
-        </div>
-        <main class="flex-grow-1 container d-flex justify-content-center flex-wrap py-2 gap-3" id="contenedor-personajes">
-          
-            
-
-          
+        <main class="flex-grow-1">
+            <h1>details</h1>
         </main>
         <footer class="bg-dark text-white d-flex justify-content-center align-items-center py-3">
             <p>Mindhub cohort 46 | Nicolás Cirulli</p>
@@ -66,6 +50,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-    <script type="module" src="../assets/js/agentes.js"></script>
 </body>
 </html>
