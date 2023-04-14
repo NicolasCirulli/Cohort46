@@ -5,6 +5,8 @@ const $select = document.getElementById( 'select-js' )
 const $inputBusqueda = document.getElementById( 'busqueda-js' )
 
 let agentes = []
+let favoritos = JSON.parse( localStorage.getItem('favoritos') ) || []
+
 // peticion
 const url = 'https://valorant-api.com/v1/agents'
 fetch( url )
@@ -23,9 +25,34 @@ const funcionEvento = () => {
     const agentesFiltrados = filtroCruzado( agentes, $select.value, $inputBusqueda.value )
     imprimirArticulos( agentesFiltrados, $contenedor )
 } 
+const funcionEventoDos = (e) => {
+    const uuid = e.target.dataset.uuid
+    if( uuid ){
+
+        const estaEnFavoritos = favoritos.some( fav => fav.uuid == uuid )
+        if( estaEnFavoritos ){
+            // esto se hace solo si esta en favoritos
+            const aux = favoritos.filter( fav => fav.uuid != uuid )
+            favoritos = aux
+        }else{
+            // esto se hace solo si no esta en favoritos
+            const agente = agentes.find( agente => agente.uuid === uuid )
+            favoritos.push( agente )
+        }
+        console.log(favoritos)
+        // esto lo hacemos si o si
+        e.target.classList.toggle('btn-danger')
+
+        // paso el array a string ( json ) 
+       /*  const json = JSON.stringify( favoritos ) */
+        localStorage.setItem('favoritos', JSON.stringify( favoritos ))
+    }
+
+}
 // eventos
 $select.addEventListener( 'change', funcionEvento )
 $inputBusqueda.addEventListener( 'input', funcionEvento )
+$contenedor.addEventListener( 'click', funcionEventoDos )
 
 
 
